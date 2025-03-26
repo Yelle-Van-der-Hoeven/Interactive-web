@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .liked {
+            color: limegreen;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="tracks"> </ul>
+
+    <script>
+
+        const tracks = [
+            {
+                id: "1",
+                title: "track 1",
+                artist: "Aphex Twin",
+            },
+
+            {
+                id: "2",
+                title: "track 2",
+                artist: "Aphex Twin",
+            },
+
+            {
+                id: "3",
+                title: "track 3",
+                artist: "Aphex Twin",
+            },
+
+            {
+                id: "4",
+                title: "track 4",
+                artist: "Aphex Twin",
+            }
+        ];
+
+        const ul = document.querySelector("#tracks");
+        let likes = JSON.parse(localStorage.getItem("likes")) || [];
+        tracks.forEach((t) => {
+            let li = document.createElement("li");
+            li.dataset.id = t.id;
+            li.innerHTML = t.title + " - " + t.artist;
+
+            if (likes.includes(t.id)) {
+                li.classList.add("liked");
+            }
+
+            ul.appendChild(li);
+        });
+
+
+        ul.addEventListener("click", (e) => {
+            let clicked = e.target;
+            if (clicked.tagName == "LI") {
+                clicked.classList.add("liked");
+                let id = clicked.dataset.id;
+
+                let likes = JSON.parse(localStorage.getItem("likes")) || [];
+                likes.push(id);
+                localStorage.setItem("likes", JSON.stringify(likes));
+            }
+        });
+
+    </script>
+</body>
+
+</html>
