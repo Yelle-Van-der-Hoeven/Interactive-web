@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habit Tracker</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="reset.css">
+    <title>Medicatie Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header>
-        <h1>My habits</h1>
-    </header>
     <div class="container">
-        <ul id="habit-list"></ul>
-        <div id="habit-detail" class="hidden">
-            <button id="back-button">Terug</button>
-            <h2 id="habit-name"></h2>
-            <p id="habit-duration"></p>
-            <p id="habit-date"></p>
-            <p id="habit-status"></p>
+        <h1>Medicatie Tracker</h1>
+        <div id="kalender"></div>
+        <div id="dag-details" class="hidden">
+            <h2 id="geselecteerde-dag"></h2>
+            <form id="medicatie-form">
+                <input type="text" id="medicatie-naam" placeholder="Medicatie naam" required>
+                <input type="time" id="tijdstip" required>
+                <button type="submit">Toevoegen</button>
+            </form>
+            <ul id="medicatie-lijst"></ul>
+            <button id="terug">Terug naar kalender</button>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
